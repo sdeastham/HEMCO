@@ -1,4 +1,7 @@
 add_subdirectory(Core)
+add_subdirectory(CalcEmis)
+add_subdirectory(IO)
+add_subdirectory(Regrid)
 add_subdirectory(Extensions)
 add_subdirectory(Interfaces)
 add_subdirectory(Shared)
