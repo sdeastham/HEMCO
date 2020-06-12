@@ -1,12 +1,13 @@
 add_library(HCO_REGRID STATIC EXCLUDE_FROM_ALL
         hco_interp_mod.F90
+        hco_regrid_a2a_mod.F90
         hcoio_messy_mod.F90
         hco_vertgrid_mod.F90
         messy_ncregrid_base.F90
         messy_ncregrid_mpi.F90
 )
 target_link_libraries(HCO_REGRID
-	PUBLIC GeosUtilHco NcdfUtilHco
+	PUBLIC HCO_IO
 )
 target_compile_options(HCO_REGRID
 	PRIVATE

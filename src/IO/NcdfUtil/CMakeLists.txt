@@ -1,4 +1,4 @@
-add_library(NcdfUtilHco STATIC EXCLUDE_FROM_ALL
+add_library(HCO_NETCDF STATIC EXCLUDE_FROM_ALL
 	m_do_err_out.F90
 	hco_m_netcdf_io_checks.F90
 	hco_m_netcdf_io_close.F90
@@ -14,9 +14,9 @@ add_library(NcdfUtilHco STATIC EXCLUDE_FROM_ALL
 )
 # NOTE: File julday_mod.F90 is included only for use in GEOS which
 # uses separate CMake files.
-target_link_libraries(NcdfUtilHco
-	PUBLIC JulDayHco HeadersHco
+target_link_libraries(HCO_NETCDF
+	PUBLIC HCO_UTIL
 )
-target_include_directories(NcdfUtilHco
+target_include_directories(HCO_NETCDF
 	INTERFACE ${HEMCO_BINARY_DIR}/mod
 )

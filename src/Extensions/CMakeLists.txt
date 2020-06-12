@@ -26,6 +26,7 @@ add_library(HCOX STATIC EXCLUDE_FROM_ALL
 	hcox_tools_mod.F90
 	hcox_volcano_mod.F90
 	ocean_toolbox_mod.F90
+	hco_henry_mod.F90
 )
 target_link_libraries(HCOX
 	PUBLIC HCO

@@ -1,3 +1,5 @@
+add_subdirectory(NcdfUtil)
+
 add_library(HCO_IO STATIC EXCLUDE_FROM_ALL
         hco_extlist_mod.F90
         hco_filedata_mod.F90
@@ -14,7 +16,7 @@ add_library(HCO_IO STATIC EXCLUDE_FROM_ALL
         hco_timeshift_mod.F90
 )
 target_link_libraries(HCO_IO
-	PUBLIC GeosUtilHco NcdfUtilHco
+	PUBLIC HCO_NETCDF
 )
 target_compile_options(HCO_IO
 	PRIVATE
