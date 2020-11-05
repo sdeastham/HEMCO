@@ -429,7 +429,8 @@ CONTAINS
        IF ( SeaConc(I,J) < 0.0_sp ) SeaConc(I,J) = 0.0_sp
 
        ! Assume no air-sea exchange over snow/ice (ALBEDO > 0.4)
-       IF ( ExtState%ALBD%Arr%Val(I,J) > 0.4_hp ) CYCLE
+       !IF ( ExtState%ALBD%Arr%Val(I,J) > 0.4_hp ) CYCLE
+       IF ( ExtState%Frozen%Arr%Val(I,J) > 0.5_hp ) CYCLE
 
        ! Do only over the ocean:
        IF ( HCO_LANDTYPE( ExtState%WLI%Arr%Val(I,J), &
@@ -864,6 +865,7 @@ CONTAINS
     ExtState%V10M%DoUse        = .TRUE.
     ExtState%TSKIN%DoUse       = .TRUE.
     ExtState%ALBD%DoUse        = .TRUE.
+    ExtState%Frozen%DoUse      = .TRUE.
     ExtState%WLI%DoUse         = .TRUE.
     IF ( HcoState%Options%PBL_DRYDEP ) THEN
        ExtState%FRAC_OF_PBL%DoUse = .TRUE.

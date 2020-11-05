@@ -129,6 +129,7 @@ MODULE HCOX_STATE_MOD
      TYPE(ExtDat_2R),  POINTER :: U10M        ! E/W 10m wind speed [m/s]
      TYPE(ExtDat_2R),  POINTER :: V10M        ! N/S 10m wind speed [m/s]
      TYPE(ExtDat_2R),  POINTER :: ALBD        ! Surface albedo [-]
+     TYPE(ExtDat_2R),  POINTER :: FROZEN      ! Combined snow/ice fraction [-]
      TYPE(ExtDat_2R),  POINTER :: WLI         ! 0=water, 1=land, 2=ice
      TYPE(ExtDat_2R),  POINTER :: T2M         ! 2m Sfce temperature [K]
      TYPE(ExtDat_2R),  POINTER :: TSKIN       ! Surface skin temperature [K]
@@ -350,6 +351,9 @@ CONTAINS
     CALL ExtDat_Init ( ExtState%ALBD, RC )
     IF ( RC /= HCO_SUCCESS ) RETURN
 
+    CALL ExtDat_Init ( ExtState%FROZEN, RC )
+    IF ( RC /= HCO_SUCCESS ) RETURN
+
     CALL ExtDat_Init ( ExtState%WLI , RC )
     IF ( RC /= HCO_SUCCESS ) RETURN
 
@@ -536,6 +540,7 @@ CONTAINS
        CALL ExtDat_Cleanup( ExtState%U10M       )
        CALL ExtDat_Cleanup( ExtState%V10M       )
        CALL ExtDat_Cleanup( ExtState%ALBD       )
+       CALL ExtDat_Cleanup( ExtState%FROZEN     )
        CALL ExtDat_Cleanup( ExtState%WLI        )
        CALL ExtDat_Cleanup( ExtState%T2M        )
        CALL ExtDat_Cleanup( ExtState%TSKIN      )

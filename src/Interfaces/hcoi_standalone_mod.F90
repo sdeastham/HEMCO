@@ -2211,6 +2211,20 @@ CONTAINS
        ENDIF
     ENDIF
 
+    !%%%%% Frozen %%%%%
+    IF ( ExtState%Frozen%DoUse ) THEN
+       Name = 'FROZEN'
+       CALL ExtDat_Set( HcoState,     ExtState%Frozen,                       &
+                        TRIM( Name ), RC,       FIRST=FIRST                 )
+       IF ( RC /= HCO_SUCCESS ) THEN
+          ErrMsg = 'Could not find quantity "' // TRIM( Name )            // &
+                   '" for the HEMCO standalone simulation!'
+          CALL HCO_Error( HcoConfig%Err, ErrMsg, RC, ThisLoc )
+          CALL HCO_Leave( HcoState%Config%Err, RC )
+          RETURN
+       ENDIF
+    ENDIF
+
     !%%%%% Land-water-ice flags  %%%%%
     IF ( ExtState%WLI%DoUse ) THEN
        Name = 'LWI'
